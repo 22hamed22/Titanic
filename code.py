@@ -1,3 +1,25 @@
+import os
+import subprocess
+
+# List of required packages
+required_packages = [
+    "pandas",
+    "seaborn",
+    "matplotlib",
+    "scikit-learn",
+    "streamlit"
+]
+
+# Install packages
+for package in required_packages:
+    try:
+        # Check if the package is already installed
+        __import__(package)
+    except ImportError:
+        # Install the package if not already installed
+        subprocess.check_call(["pip", "install", package])
+
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
