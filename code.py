@@ -1,25 +1,4 @@
-import subprocess
-import sys
 
-# Function to install packages
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# List of required packages
-required_packages = [
-    "pandas",
-    "seaborn",
-    "matplotlib",
-    "scikit-learn",
-    "streamlit"
-]
-
-# Install missing packages
-for package in required_packages:
-    try:
-        __import__(package)
-    except ImportError:
-        install(package)
 
 # Importing packages after installation
 import pandas as pd
