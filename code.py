@@ -1,5 +1,9 @@
-import os
 import subprocess
+import sys
+
+# Function to install packages
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 # List of required packages
 required_packages = [
@@ -10,16 +14,14 @@ required_packages = [
     "streamlit"
 ]
 
-# Install packages
+# Install missing packages
 for package in required_packages:
     try:
-        # Check if the package is already installed
         __import__(package)
     except ImportError:
-        # Install the package if not already installed
-        subprocess.check_call(["pip", "install", package])
+        install(package)
 
-
+# Importing packages after installation
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -28,6 +30,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 import streamlit as st
+
 
 
 # Set the page configuration (optional, for setting title, layout, etc.)
